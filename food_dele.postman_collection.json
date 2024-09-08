@@ -1,0 +1,1300 @@
+{
+	"info": {
+		"_postman_id": "146bb7db-50b3-42d9-b613-1596bcd0a915",
+		"name": "food_dele",
+		"description": "This API collection is designed for a restaurant management system, providing endpoints for managing various aspects of restaurant operations, including items, modifiers, orders, and employee details. The system supports role-based access control to ensure appropriate permissions for restaurant owners, employees, and customers.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32610424"
+	},
+	"item": [
+		{
+			"name": "core",
+			"item": [
+				{
+					"name": "res_signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shop1\",\n    \"address\": \"dummy\",\n    \"contact_number\": \"01797000000\",\n    \"username\": \"res1\",\n    \"password\": \"password\",\n    \"role\": \"owner\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/user/restaurant/signup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"restaurant",
+								"signup",
+								""
+							]
+						},
+						"description": "This endpoint allows a new restaurant to sign up by providing the required details such as `name`, `address`, and owner credentials (`username`, `password`, `role`, `contact_number`)."
+					},
+					"response": []
+				},
+				{
+					"name": "emp_sginup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Emp1\",\n    \"password\": \"password\",\n    \"role\": \"employee\",\n    \"address\": \"dummy\",\n    \"contact_number\": \"123-456-7890\",\n    \"restaurant\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/user/employee/signup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"employee",
+								"signup",
+								""
+							]
+						},
+						"description": "This endpoint allows for the registration of new employees under a specific restaurant. The endpoint expects details such as the employee's `username`, `password`, `role`, `address`, `contact_number`, and the `restaurant` they will be associated with."
+					},
+					"response": []
+				},
+				{
+					"name": "cus_signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"atonu\",\n    \"password\": \"password\",\n    \"role\": \"customer\",\n    \"address\": \"456 Food Blvd\",\n    \"contact_number\": \"01797\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/user/customer/signup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"customer",
+								"signup",
+								""
+							]
+						},
+						"description": "This endpoint allows for the registration of new customers. It requires details such as the customer's `username`, `password`, `role`, `address`, and `contact_number`."
+					},
+					"response": []
+				},
+				{
+					"name": "login/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"username\": \"atonu\",\n        \"password\": \"password\"\n        \n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/user/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"login",
+								""
+							]
+						},
+						"description": "This endpoint allows users to authenticate and obtain an authentication token. The token can be used for accessing other protected endpoints."
+					},
+					"response": []
+				}
+			],
+			"description": "This collection contains endpoints for managing user accounts, including registration, login, and employee-specific operations. These endpoints allow users to create new accounts, authenticate, and interact with different user roles such as restaurant owners, employees, and customers."
+		},
+		{
+			"name": "catagory",
+			"item": [
+				{
+					"name": "Create Catagorey",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Drinks\",\n    \"description\": \"Drinks and otherhcfvs beverages\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/create/category/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"create",
+								"category",
+								""
+							]
+						},
+						"description": "Create a new category for a specific restaurant. This endpoint requires the user to be authenticated and either an owner or employee associated with the restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "List Catagorey",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/categories/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"categories",
+								""
+							]
+						},
+						"description": "Retrieve a list of all categories associated with the restaurant of the authenticated user. The user must be authenticated and either an owner or employee."
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Catagorey",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/categories/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"categories",
+								"1",
+								""
+							]
+						},
+						"description": "Retrieve detailed information about a specific category. The user must be authenticated and either an owner or employee with access to the category’s associated"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Catagorey",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token ed2b238aed6f74421fc27c1b38994374231cf290",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Category Name1\",\n    \"description\": \"Updated description12.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/categories/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"categories",
+								"1",
+								""
+							]
+						},
+						"description": "Update an existing category. The user must be authenticated and either an owner or employee with access to the category’s associated restaurant.\n\nThis endpoint also supports PATCH request.Partially update an existing category. The user must be authenticated and either an owner or employee with access to the category’s associated restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Catagorey",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token ed2b238aed6f74421fc27c1b38994374231cf290",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/categories/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"categories",
+								"1",
+								""
+							]
+						},
+						"description": "Delete a specific category. The user must be authenticated and either an owner or employee with access to the category’s associated restaurant."
+					},
+					"response": []
+				}
+			],
+			"description": "Allows restaurant owners and employees to add new catagories to the restaurant’s inventory."
+		},
+		{
+			"name": "item",
+			"item": [
+				{
+					"name": "Create Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/Users/atonushaha/Desktop/project images/product1.jpg"
+								},
+								{
+									"key": "name",
+									"value": "Item1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "this is demo2",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "13.2",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "restaurant",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/create/item/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"create",
+								"item",
+								""
+							]
+						},
+						"description": "Create a new item for a specific restaurant. This endpoint requires the user to be authenticated and either an owner or employee associated with the restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "List Item",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/items/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"items",
+								""
+							]
+						},
+						"description": "Retrieve a list of all items associated with the restaurant of the authenticated user. The user must be authenticated and either an owner or employee."
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Item",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/item/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"item",
+								"1",
+								""
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Token ed2b238aed6f74421fc27c1b38994374231cf290",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Retrieve detailed information about a specific item. The user must be authenticated and either an owner or employee with access to the item’s associated restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Item1up",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Updated description.",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "29.99",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/Users/atonushaha/Desktop/project images/logo.png"
+								},
+								{
+									"key": "category",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/item/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"item",
+								"1",
+								""
+							]
+						},
+						"description": "Update an existing item. The user must be authenticated and either an owner or employee with access to the item’s associated restaurant.\n\nAlso supports PATCH request."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token ed2b238aed6f74421fc27c1b38994374231cf290",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/item/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"item",
+								"1",
+								""
+							]
+						},
+						"description": "Partially update an existing item. The user must be authenticated and either an owner or employee with access to the item’s associated restaurant."
+					},
+					"response": []
+				}
+			],
+			"description": "Allows restaurant owners and employees to add new items to the restaurant’s inventory. This includes specifying details such as the item’s name, description, price, category, and associated restaurant."
+		},
+		{
+			"name": "Modifier Group",
+			"item": [
+				{
+					"name": "Create Modifier Group",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"size\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/create/modifiers-group/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"create",
+								"modifiers-group",
+								""
+							]
+						},
+						"description": "Create a new modifier group for a restaurant. This endpoint requires the user to be authenticated and either an owner or employee associated with the restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "List Modifier Group",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/modifier-groups/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"modifier-groups",
+								""
+							]
+						},
+						"description": "Retrieve a list of all modifier groups associated with the restaurant of the authenticated user. The user must be authenticated and either an owner or employee."
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Modifier Group",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/modifier-group/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"modifier-group",
+								"1",
+								""
+							]
+						},
+						"description": "Retrieve detailed information about a specific modifier group. The user must be authenticated and either an owner or employee with access to the modifier group's associated restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Modifier Group",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Size\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/modifier-group/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"modifier-group",
+								"1",
+								""
+							]
+						},
+						"description": "Update an existing modifier group. The user must be authenticated and either an owner or employee with access to the modifier group's associated restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Modifier Group",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token ed2b238aed6f74421fc27c1b38994374231cf290",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/modifier-group/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"modifier-group",
+								"1",
+								""
+							]
+						},
+						"description": "Delete a specific modifier group. The user must be authenticated and either an owner or employee with access to the modifier group's associated restaurant."
+					},
+					"response": []
+				}
+			],
+			"description": "Enables the creation of new modifier groups to categorize modifiers. This helps in organizing different options or customizations available for items."
+		},
+		{
+			"name": "Modifier",
+			"item": [
+				{
+					"name": "Create Modifier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n\n{\n    \"name\": \"Extra \",\n    \"price\": \"1.50\",\n    \"modifier_group\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/create/modifiers/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"create",
+								"modifiers",
+								""
+							]
+						},
+						"description": "Create a new modifier for a restaurant. This endpoint requires the user to be authenticated and either an owner or employee associated with the restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "List of Modifiers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/modifiers/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"modifiers",
+								""
+							]
+						},
+						"description": "Retrieve a list of all modifiers associated with the restaurant of the authenticated user. The user must be authenticated."
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Modifier",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/modifiers/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"modifiers",
+								"1",
+								""
+							]
+						},
+						"description": "Retrieve detailed information about a specific modifier. The user must be authenticated and either an owner or employee with access to the modifier's associated restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Modifier",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Large\",\n    \"price\": \"9.99\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/modifiers/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"modifiers",
+								"1",
+								""
+							]
+						},
+						"description": "Update an existing modifier. The user must be authenticated and either an owner or employee with access to the modifier's associated restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Modifier",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token ed2b238aed6f74421fc27c1b38994374231cf290",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/inventory/modifiers/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"inventory",
+								"modifiers",
+								"1",
+								""
+							]
+						},
+						"description": "Delete a specific modifier. The user must be authenticated and either an owner or employee with access to the modifier's associated restaurant."
+					},
+					"response": []
+				}
+			],
+			"description": "Allows the addition of new modifiers, such as options or customizations for items. This is essential for providing customers with various choices."
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "List of all orders for owner, employee",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/order/restaurant-orders/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"order",
+								"restaurant-orders",
+								""
+							]
+						},
+						"description": "Retrieve a list of all orders associated with the restaurant of the authenticated user. Users must be authenticated and have a role of either owner or employee."
+					},
+					"response": []
+				},
+				{
+					"name": "Update or Cancel order",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 38b4dc6dbebae2dab45224d1764bc45233a4e7c7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"processed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/order/orders/1/update-status/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"order",
+								"orders",
+								"1",
+								"update-status",
+								""
+							]
+						},
+						"description": "Update the status of a specific order. Users must be authenticated and have a role of either owner or employee. The status transition must be valid."
+					},
+					"response": []
+				}
+			],
+			"description": "Allows restaurant owners and employees to view all orders associated with their restaurant, including those placed by customers. This provides an overview of all current and past orders."
+		},
+		{
+			"name": "restaurant",
+			"item": [
+				{
+					"name": "List of all employee",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/user/employees/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"employees",
+								""
+							]
+						},
+						"description": "Retrieves a list of employees associated with the authenticated restaurant owner. The response includes the count of employees and a list of employee details."
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Employee",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 0e03b0e3bcebb5f000c4397d22f36388919a26aa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/user/employees/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"employees",
+								"1",
+								""
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Token 4b67b154ca6d76ebd246401a2b9bcd23027d3802",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Retrieves detailed information about a specific employee by their ID."
+					},
+					"response": []
+				}
+			],
+			"description": "Retrieves a list of all restaurants, including basic details such as name and address. This is useful for viewing and discovering available restaurants."
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "order",
+					"item": [
+						{
+							"name": "Create order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 8a911b89da9983f258ab95e0b2b4c345432eabdc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"items\": [\n        {\n            \"item\": 1,       \n            \"quantity\": 2,\n            \"modifiers\": [1]  \n        }\n    ],\n    \"payment_method\": \"card\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/order/create/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"order",
+										"create",
+										""
+									]
+								},
+								"description": "Allows authenticated customers to create a new order. The order is associated with the customer who is making the request. If the payment method is \"card\", a payment transaction is initiated and a payment record is created."
+							},
+							"response": []
+						},
+						{
+							"name": "List of Orders",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 8a911b89da9983f258ab95e0b2b4c345432eabdc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/order/orders/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"order",
+										"orders",
+										""
+									]
+								},
+								"description": "Retrieves a list of all orders associated with the authenticated customer."
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel Orders",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 8a911b89da9983f258ab95e0b2b4c345432eabdc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/order/orders/1/cancel/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"order",
+										"orders",
+										"1",
+										"cancel",
+										""
+									]
+								},
+								"description": "Allows customers to cancel an existing order if it is in the \"pending\" state. The request must specify the `order_id` of the order to be canceled."
+							},
+							"response": []
+						}
+					],
+					"description": "Allows customer to create and view all orders associated with them, can cancel order and able to make payment. This provides an overview of all current and past orders."
+				},
+				{
+					"name": "List of all Restaurant",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 8a911b89da9983f258ab95e0b2b4c345432eabdc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/user/restaurants/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"restaurants",
+								""
+							]
+						},
+						"description": "Retrieves a paginated list of all restaurants. This endpoint is accessible to authenticated customers."
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Restaurant",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 8a911b89da9983f258ab95e0b2b4c345432eabdc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/user/restaurants/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"restaurants",
+								"1",
+								""
+							]
+						},
+						"description": "Retrieves detailed information about a specific restaurant by its ID"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
