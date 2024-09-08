@@ -34,3 +34,26 @@ class EmployeeSerializer(serializers.ModelSerializer):
         employee = Employee.objects.create(user=user,restaurant=restaurant)
 
         return employee
+    
+
+
+class EmployeeListSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    restaurant_name = serializers.CharField(source='restaurant.name', read_only=True)
+
+    class Meta:
+        model = Employee
+        fields = ('username', 'restaurant_name')
+
+
+
+class EmployeeDetailSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    role = serializers.CharField(source='user.role', read_only=True)
+    address = serializers.CharField(source='user.address', read_only=True)
+    contact_number = serializers.CharField(source='user.contact_number', read_only=True)
+    restaurant_name = serializers.CharField(source='restaurant.name', read_only=True)
+
+    class Meta:
+        model = Employee
+        fields = ('username', 'role', 'address', 'contact_number', 'restaurant_name')

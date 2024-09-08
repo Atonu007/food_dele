@@ -1,5 +1,8 @@
 from rest_framework import serializers
 from ..models import User,Restaurant
+from inventory.serializers.cat_serializers import CategorySerializer
+from inventory.serializers.item_serializers import ItemSerializer
+
 
 
 # restaurant serializer
@@ -39,3 +42,18 @@ class RestaurantSerializer(serializers.ModelSerializer):
             'role': restaurant.owner.role
         }
         return response_data
+    
+
+
+
+class RestaurantDetailSerializer(serializers.ModelSerializer):
+    
+    owner_address = serializers.CharField(source='owner.address', read_only=True)
+    owner_contact_number = serializers.CharField(source='owner.contact_number', read_only=True)
+    
+    categories = CategorySerializer(many=True, read_only=True)
+    items = ItemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Restaurant
+        fields = ('name', 'address',  'owner_address', 'owner_contact_number', 'categories', 'items')
